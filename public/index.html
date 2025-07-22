@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Label Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☕ Coffee Label Generator</h1>
+            <p>Generate professional labels for your vacuum-sealed coffee bags</p>
+        </header>
+
+        <main>
+            <form id="labelForm" action="/generate-label" method="POST">
+                <div class="form-grid">
+                    <!-- Roaster/Brand -->
+                    <div class="form-group">
+                        <label for="roaster">Roaster/Brand *</label>
+                        <input type="text" id="roaster" name="roaster" value="Ilse" placeholder="e.g., Airworks Coffee" required>
+                        <small>Your roastery or brand name</small>
+                    </div>
+
+                    <!-- Coffee Origin -->
+                    <div class="form-group">
+                        <label for="origin">Coffee Origin *</label>
+                        <input type="text" id="origin" name="origin" placeholder="e.g., Ecuador" required>
+                    </div>
+
+                    <!-- Flavor Notes -->
+                    <div class="form-group full-width">
+                        <label for="flavorNotes">Flavor Notes *</label>
+                        <textarea id="flavorNotes" name="flavorNotes" 
+                                  placeholder="e.g., Tropical, Stone Fruit, Floral, White Grape, Jammy and Intense"
+                                  rows="3" required></textarea>
+                        <small>Describe the tasting notes and flavor profile</small>
+                    </div>
+
+                    <!-- Processing Method -->
+                    <div class="form-group">
+                        <label for="processing">Processing Method *</label>
+                        <input type="text" id="processing" name="processing" placeholder="e.g., Washed, Natural, Honey" value="Washed" required>
+                        <small>Common: Washed, Natural, Honey, Semi-Washed, Anaerobic</small>
+                    </div>
+
+                    <!-- Region/Farm -->
+                    <div class="form-group">
+                        <label for="region">Region/Farm *</label>
+                        <input type="text" id="region" name="region" placeholder="e.g., Gesha" required>
+                    </div>
+
+                    <!-- Varietal -->
+                    <div class="form-group">
+                        <label for="varietal">Varietal *</label>
+                        <input type="text" id="varietal" name="varietal" placeholder="e.g., Bourbon, Typica, Geisha" required>
+                        <small>Coffee plant variety/cultivar</small>
+                    </div>
+
+                    <!-- Altitude -->
+                    <div class="form-group">
+                        <label for="altitude">Altitude</label>
+                        <div class="altitude-input">
+                            <input type="number" id="altitudeAmount" name="altitudeAmount" placeholder="1200" min="0" max="3000">
+                            <select id="altitudeUnit" name="altitudeUnit">
+                                <option value="masl" selected>masl</option>
+                                <option value="ft">ft</option>
+                                <option value="m">m</option>
+                            </select>
+                        </div>
+                        <small>Growing elevation (meters above sea level)</small>
+                    </div>
+
+                    <!-- Roast Date -->
+                    <div class="form-group">
+                        <label for="roastDate">Roast Date *</label>
+                        <input type="date" id="roastDate" name="roastDate" required>
+                    </div>
+
+                    <!-- Storage Date -->
+                    <div class="form-group">
+                        <label for="storageDate">Storage Date *</label>
+                        <input type="date" id="storageDate" name="storageDate" required>
+                        <small>When you plan to freeze/store the coffee</small>
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="form-group">
+                        <label for="weight">Weight *</label>
+                        <div class="weight-input">
+                            <input type="number" id="weightAmount" name="weightAmount" placeholder="15" step="0.1" required>
+                            <select id="weightUnit" name="weightUnit">
+                                <option value="G" selected>G</option>
+                                <option value="oz">oz</option>
+                                <option value="lb">lb</option>
+                                <option value="kg">kg</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- QR Code URL -->
+                    <div class="form-group full-width">
+                        <label for="qrUrl">QR Code URL (Optional)</label>
+                        <input type="url" id="qrUrl" name="qrUrl" placeholder="https://example.com/coffee-details">
+                        <small>Link to bean info, farm details, or product page</small>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="previewBtn" class="btn btn-secondary">Preview Label</button>
+                    <button type="submit" class="btn btn-primary">Generate PDF Label</button>
+                </div>
+            </form>
+
+            <!-- Preview Area -->
+            <div id="preview" class="preview-container" style="display: none;">
+                <h3>Label Preview</h3>
+                <div class="label-preview">
+                    <div class="label-qr"></div>
+                    <div class="label-brand"></div>
+                    <div class="label-content">
+                        <div class="label-origin"></div>
+                        <div class="label-flavor-notes"></div>
+                        <div class="label-details">
+                            <div class="label-processing"></div>
+                            <div class="label-roast-date"></div>
+                            <div class="label-region"></div>
+                            <div class="label-storage-date"></div>
+                            <div class="label-varietal"></div>
+                            <div class="label-weight"></div>
+                            <div class="label-altitude"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Optimized for Phomemo M221 3-inch thermal printer</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
