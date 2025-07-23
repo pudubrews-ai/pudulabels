@@ -114,34 +114,60 @@ async function generateLabel(doc, data) {
         }
     }
 
-    // Roaster/Brand text (vertical, left side) - bigger like original
+    // Roaster/Brand text (vertical, left side) - bottom justified
     doc.save();
-    doc.translate(10, 85);
+    
+    // Calculate font size based on character count
+    const roasterText = data.roaster.toUpperCase();
+    const textLength = roasterText.length;
+    let fontSize;
+    
+    // Font size based on length
+    if (textLength <= 4) {
+        fontSize = 20; // Very short names like "ILSE"
+    } else if (textLength <= 8) {
+        fontSize = 16; // Short names
+    } else if (textLength <= 12) {
+        fontSize = 14; // Medium names
+    } else if (textLength <= 16) {
+        fontSize = 12; // Long names
+    } else if (textLength <= 20) {
+        fontSize = 10; // Very long names like "The Picky Chemist"
+    } else {
+        fontSize = 8; // Extremely long names
+    }
+    
+    console.log(`Roaster: "${roasterText}" (${textLength} chars) -> ${fontSize}pt, bottom justified`);
+    
+    // Position at bottom of available space and rotate
+    doc.translate(12, 130); // Bottom position
     doc.rotate(-90);
-    doc.fontSize(12)
+    
+    // Simple bottom positioning - text starts at bottom and grows up
+    doc.fontSize(fontSize)
        .font('Helvetica-Bold')
        .fillColor('#000000')
-       .text(data.roaster.toUpperCase(), 0, 0);
+       .text(roasterText, 0, 0); // Simple positioning at bottom
     doc.restore();
 
-    // Main content area - adjusted for bigger roaster name and QR code space
-    const leftMargin = 30;
+    // Main content area - adjusted for much bigger roaster name and QR code space
+    const leftMargin = 40;
     const rightMargin = qrSize > 0 ? qrSize + 15 : 8;
     const contentWidth = 216 - leftMargin - rightMargin;
     let yPos = 12;
 
     // Coffee origin - bold and prominent for thermal
-    doc.fontSize(16)
+    doc.fontSize(14)
        .font('Helvetica-Bold')
        .fillColor('#000000')
        .text(data.origin.toUpperCase(), leftMargin, yPos);
     
     // Simple underline for thermal printing
-    doc.moveTo(leftMargin, yPos + 18)
-       .lineTo(leftMargin + Math.min(doc.widthOfString(data.origin.toUpperCase()), contentWidth - 10), yPos + 18)
+    doc.moveTo(leftMargin, yPos + 16)
+       .lineTo(leftMargin + Math.min(doc.widthOfString(data.origin.toUpperCase()), contentWidth - 10), yPos + 16)
        .stroke('#000000', 0.5);
     
-    yPos += 25;
+    yPos += 22;
 
     // Flavor notes with thermal-optimized spacing
     doc.fontSize(7)
@@ -211,13 +237,13 @@ async function generateLabel(doc, data) {
        .font('Helvetica')
        .text(data.storageFormatted, col2, yPos + 28);
 
-    // Weight - prominent for thermal
+    // Weight - same formatting as other details
     doc.fontSize(6)
        .font('Helvetica-Bold')
        .text('WEIGHT', col2, yPos + 40);
     
-    doc.fontSize(9)
-       .font('Helvetica-Bold')
+    doc.fontSize(7)
+       .font('Helvetica')
        .text(data.weight, col2, yPos + 48);
 
     // Altitude (if provided)
