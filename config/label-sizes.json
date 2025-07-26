@@ -1,4 +1,51 @@
 {
+  "_documentation": {
+    "description": "Coffee Label Generator - Label Size Configuration",
+    "units": "All measurements are in inches (converted to points internally at 72 DPI)",
+    "structure": {
+      "sizes": {
+        "description": "Available label size configurations",
+        "properties": {
+          "name": "Display name for the label size",
+          "width": "Label width in inches",
+          "height": "Label height in inches",
+          "margins": {
+            "top": "Top margin in inches",
+            "bottom": "Bottom margin in inches", 
+            "left": "Left margin in inches",
+            "right": "Right margin in inches"
+          },
+          "fonts": {
+            "description": "Font sizes in points for different text elements",
+            "origin": "Coffee origin text size",
+            "flavorNotes": "Tasting notes body text size",
+            "flavorNotesLabel": "TASTING NOTES label size",
+            "details": "Detail values (process, region, etc.) size",
+            "detailLabels": "Detail labels (PROCESS:, REGION:, etc.) size"
+          },
+          "qrSize": "QR code dimensions in inches",
+          "roasterFontSizes": {
+            "description": "Dynamic font sizing based on roaster name character count",
+            "note": "Keys are maximum character counts, values are font sizes in points",
+            "4": "Font size for names ≤4 characters (e.g., 'ILSE')",
+            "8": "Font size for names ≤8 characters",
+            "12": "Font size for names ≤12 characters",
+            "16": "Font size for names ≤16 characters",
+            "20": "Font size for names ≤20 characters",
+            "default": "Font size for names >20 characters"
+          },
+          "spacing": {
+            "description": "Layout spacing measurements in inches",
+            "roasterMargin": "Left margin for main content area",
+            "contentTop": "Top margin for content area",
+            "flavorNotesGap": "Vertical gap after TASTING NOTES label",
+            "detailsGap": "Vertical spacing between detail sections"
+          }
+        }
+      },
+      "default": "Which size configuration to use by default"
+    }
+  },
   "sizes": {
     "standard": {
       "name": "Standard (3\" x 2\")",
@@ -100,5 +147,27 @@
       }
     }
   },
-  "default": "standard"
+  "default": "standard",
+  "_usage": {
+    "howToModify": "To customize label sizes, edit the values above and restart the server",
+    "addingNewSizes": "To add a new size, copy an existing size object and modify the values",
+    "examples": {
+      "customSize": {
+        "name": "Custom (2.5\" x 1.8\")",
+        "width": 2.5,
+        "height": 1.8,
+        "margins": {"top": 0.1, "bottom": 0.1, "left": 0.15, "right": 0.1},
+        "fonts": {"origin": 12, "flavorNotes": 7, "flavorNotesLabel": 6, "details": 6, "detailLabels": 5},
+        "qrSize": 0.4,
+        "roasterFontSizes": {"4": 18, "8": 14, "12": 12, "16": 10, "20": 9, "default": 7},
+        "spacing": {"roasterMargin": 0.45, "contentTop": 0.14, "flavorNotesGap": 0.11, "detailsGap": 0.09}
+      }
+    },
+    "tips": [
+      "Keep margins proportional to label size",
+      "Font sizes should scale with label dimensions",
+      "Test print samples to verify spacing and readability",
+      "QR codes need minimum 0.3\" size to scan reliably"
+    ]
+  }
 }

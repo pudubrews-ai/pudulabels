@@ -22,9 +22,10 @@ Generate professional PDF labels for your vacuum-sealed coffee bags with a user-
 ## Features
 
 - **Web-based interface** - Works on any device with a browser
+- **Configurable label sizes** - Support for multiple thermal printer sizes
 - **Exact design replication** - Matches your existing label layout
 - **PDF generation** - Creates print-ready PDFs for any printer
-- **Live preview** - See your label before generating
+- **Live preview** - See your label before generating with size preview
 - **Auto-calculations** - Storage date calculated automatically
 - **Responsive design** - Works on desktop and mobile
 
@@ -42,25 +43,69 @@ The generated labels include:
 
 ## Usage
 
-1. Fill out the web form with your coffee details
-2. Click "Preview Label" to see how it will look
-3. Click "Generate PDF Label" to download the printable PDF
-4. Print the PDF on your Phomemo M221 or any printer
+1. Select your preferred label size from the dropdown
+2. Fill out the web form with your coffee details
+3. Click "Preview Label" to see how it will look
+4. Click "Generate PDF Label" to download the printable PDF
+5. Print the PDF on your thermal printer or any standard printer
 
-## Label Specifications
+## Label Sizes & Configuration
 
-- **Dimensions**: 3" × 2" (optimized for M221 printer)
-- **Format**: PDF with exact layout matching your existing labels
-- **Typography**: Clean, professional fonts with proper hierarchy
+### Available Sizes
+- **Standard (3" × 2")** - Default size, optimized for Phomemo M221
+- **Large (4" × 3")** - For bigger thermal printers  
+- **Small (2" × 1.5")** - For compact label applications
+
+### Customizing Label Sizes
+
+Label dimensions and styling are fully configurable through `config/label-sizes.json`. You can:
+
+- **Add new sizes** - Create custom dimensions for your specific printer
+- **Adjust fonts** - Modify text sizes for better readability
+- **Fine-tune spacing** - Control margins and element positioning
+- **Scale QR codes** - Set appropriate QR code sizes for scanning
+
+#### Example: Adding a Custom Size
+
+```json
+"custom": {
+  "name": "Custom (2.5\" x 1.8\")",
+  "width": 2.5,
+  "height": 1.8,
+  "margins": {"top": 0.1, "bottom": 0.1, "left": 0.15, "right": 0.1},
+  "fonts": {"origin": 12, "flavorNotes": 7, "details": 6},
+  "qrSize": 0.4,
+  "spacing": {"roasterMargin": 0.45, "contentTop": 0.14}
+}
+```
+
+#### Configuration Details
+
+- **Measurements**: All dimensions in inches (automatically converted to points)
+- **Dynamic scaling**: Roaster text size adjusts based on character count
+- **Proportional fonts**: Text sizes scale appropriately with label dimensions
+- **Thermal optimized**: Black and white design for thermal printers
+
+### Label Specifications
+
+- **Format**: PDF with exact layout matching your design
+- **Typography**: Clean, professional fonts with proper hierarchy  
 - **Layout**: Left-aligned content with vertical brand placement
+- **QR codes**: Optional QR codes with configurable sizing
 
 ## Printing
 
 The generated PDFs work with:
-- ✅ Phomemo M221 thermal printer
-- ✅ Any standard printer (inkjet, laser)
-- ✅ Print shops and services
-- ✅ Mobile printing apps
+- ✅ **Thermal printers** - Phomemo M221, Brother QL series, DYMO, etc.
+- ✅ **Standard printers** - Inkjet, laser, any PDF-capable printer
+- ✅ **Print services** - Online print shops, local services
+- ✅ **Mobile printing** - AirPrint, Google Cloud Print, printing apps
+
+### Printer Setup Tips
+- Select the correct label size in your printer driver
+- Use the highest quality/slowest speed setting for thermal printers
+- Test print on regular paper first to verify sizing
+- For thermal printers, ensure labels are loaded correctly
 
 ## Development
 
@@ -69,12 +114,14 @@ The generated PDFs work with:
 npm run dev
 
 # Project structure
-├── server.js          # Express server and PDF generation
+├── server.js              # Express server and PDF generation
+├── config/
+│   └── label-sizes.json   # Label size configurations
 ├── public/
-│   ├── index.html     # Web interface
-│   ├── style.css      # Styling and responsive design
-│   └── script.js      # Form handling and preview
-└── package.json       # Dependencies and scripts
+│   ├── index.html         # Web interface
+│   ├── style.css          # Styling and responsive design
+│   └── script.js          # Form handling and preview
+└── package.json           # Dependencies and scripts
 ```
 
 ## Legacy Python Version
