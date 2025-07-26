@@ -2,22 +2,99 @@
 
 Generate professional PDF labels for your vacuum-sealed coffee bags with a user-friendly web interface. Designed to match your existing label format perfectly.
 
+## System Requirements
+
+- **Operating System**: Windows, macOS, or Linux
+- **Node.js**: Version 16.0.0 or higher
+- **npm**: Version 8.0.0 or higher  
+- **Browser**: Any modern web browser (Chrome, Firefox, Safari, Edge)
+- **Memory**: 512MB RAM minimum
+- **Storage**: 100MB free disk space
+
+## Prerequisites
+
+Before getting started, you'll need to install Node.js and npm on your system.
+
+### Installing Node.js and npm
+
+#### Option 1: Download from Official Website (Recommended)
+1. Visit [nodejs.org](https://nodejs.org/)
+2. Download the LTS (Long Term Support) version
+3. Run the installer and follow the setup wizard
+4. Verify installation:
+   ```bash
+   node --version
+   npm --version
+   ```
+
+#### Option 2: Using Package Managers
+
+**macOS (with Homebrew):**
+```bash
+brew install node
+```
+
+**Windows (with Chocolatey):**
+```bash
+choco install nodejs
+```
+
+**Linux (Ubuntu/Debian):**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+**Linux (CentOS/RHEL/Fedora):**
+```bash
+curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+sudo yum install -y nodejs
+```
+
 ## Quick Start
 
-1. **Install dependencies**:
+1. **Clone or download this repository**:
+   ```bash
+   git clone <repository-url>
+   cd Pudulabels
+   ```
+
+2. **Install project dependencies**:
    ```bash
    npm install
    ```
 
-2. **Start the server**:
+3. **Start the server**:
    ```bash
    npm start
    ```
 
-3. **Open your browser**:
+4. **Open your browser**:
    ```
    http://localhost:3000
    ```
+
+### Troubleshooting Installation
+
+**If you get permission errors on macOS/Linux:**
+```bash
+sudo npm install -g npm@latest
+```
+
+**If npm install fails:**
+```bash
+# Clear npm cache
+npm cache clean --force
+
+# Delete node_modules and reinstall
+rm -rf node_modules package-lock.json
+npm install
+```
+
+**Check your Node.js version:**
+- This project requires Node.js 16+ and npm 8+
+- Run `node --version` and `npm --version` to check
+- If your version is too old, please update Node.js from [nodejs.org](https://nodejs.org/)
 
 ## Features
 
