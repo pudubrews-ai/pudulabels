@@ -1,0 +1,104 @@
+{
+  "sizes": {
+    "standard": {
+      "name": "Standard (3\" x 2\")",
+      "width": 3.0,
+      "height": 2.0,
+      "margins": {
+        "top": 0.11,
+        "bottom": 0.11,
+        "left": 0.17,
+        "right": 0.11
+      },
+      "fonts": {
+        "origin": 14,
+        "flavorNotes": 8,
+        "flavorNotesLabel": 7,
+        "details": 7,
+        "detailLabels": 6
+      },
+      "qrSize": 0.49,
+      "roasterFontSizes": {
+        "4": 20,
+        "8": 16,
+        "12": 14,
+        "16": 12,
+        "20": 10,
+        "default": 8
+      },
+      "spacing": {
+        "roasterMargin": 0.56,
+        "contentTop": 0.17,
+        "flavorNotesGap": 0.13,
+        "detailsGap": 0.11
+      }
+    },
+    "large": {
+      "name": "Large (4\" x 3\")",
+      "width": 4.0,
+      "height": 3.0,
+      "margins": {
+        "top": 0.17,
+        "bottom": 0.17,
+        "left": 0.22,
+        "right": 0.17
+      },
+      "fonts": {
+        "origin": 18,
+        "flavorNotes": 10,
+        "flavorNotesLabel": 9,
+        "details": 9,
+        "detailLabels": 8
+      },
+      "qrSize": 0.63,
+      "roasterFontSizes": {
+        "4": 26,
+        "8": 22,
+        "12": 18,
+        "16": 16,
+        "20": 14,
+        "default": 12
+      },
+      "spacing": {
+        "roasterMargin": 0.69,
+        "contentTop": 0.22,
+        "flavorNotesGap": 0.17,
+        "detailsGap": 0.14
+      }
+    },
+    "small": {
+      "name": "Small (2\" x 1.5\")",
+      "width": 2.0,
+      "height": 1.5,
+      "margins": {
+        "top": 0.08,
+        "bottom": 0.08,
+        "left": 0.11,
+        "right": 0.08
+      },
+      "fonts": {
+        "origin": 10,
+        "flavorNotes": 6,
+        "flavorNotesLabel": 5,
+        "details": 5,
+        "detailLabels": 4
+      },
+      "qrSize": 0.35,
+      "roasterFontSizes": {
+        "4": 14,
+        "8": 12,
+        "12": 10,
+        "16": 8,
+        "20": 7,
+        "default": 6
+      },
+      "spacing": {
+        "roasterMargin": 0.39,
+        "contentTop": 0.11,
+        "flavorNotesGap": 0.08,
+        "detailsGap": 0.07
+      }
+    }
+  },
+  "default": "standard"
+}

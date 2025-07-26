@@ -167,16 +167,33 @@ small {
 
 /* Label preview - thermal printer optimized (black and white) */
 .label-preview {
-    width: 300px;
-    height: 200px;
     background: white;
     border: 2px solid #000000;
     margin: 0 auto;
     position: relative;
-    padding: 8px;
     font-family: Helvetica, Arial, sans-serif;
     display: flex;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Different label sizes */
+.label-preview.standard {
+    width: 300px;
+    height: 200px;
+    padding: 8px;
+}
+
+.label-preview.large {
+    width: 400px;
+    height: 300px;
+    padding: 12px;
+}
+
+.label-preview.small {
+    width: 200px;
+    height: 150px;
+    padding: 6px;
 }
 
 .label-preview::before {
@@ -213,15 +230,31 @@ small {
 .label-brand {
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    font-size: 20px;
     font-weight: bold;
     color: #000000;
-    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px;
     text-transform: uppercase;
+}
+
+/* Brand sizing for different label sizes */
+.label-preview.standard .label-brand {
+    font-size: 20px;
+    width: 30px;
+    margin-right: 20px;
+}
+
+.label-preview.large .label-brand {
+    font-size: 26px;
+    width: 40px;
+    margin-right: 25px;
+}
+
+.label-preview.small .label-brand {
+    font-size: 14px;
+    width: 20px;
+    margin-right: 15px;
 }
 
 .label-content {
@@ -232,7 +265,6 @@ small {
 }
 
 .label-origin {
-    font-size: 16px;
     font-weight: bold;
     color: #000000;
     text-transform: uppercase;
@@ -241,8 +273,20 @@ small {
     margin-bottom: 4px;
 }
 
+/* Origin sizing for different label sizes */
+.label-preview.standard .label-origin {
+    font-size: 16px;
+}
+
+.label-preview.large .label-origin {
+    font-size: 20px;
+}
+
+.label-preview.small .label-origin {
+    font-size: 12px;
+}
+
 .label-flavor-notes {
-    font-size: 8px;
     line-height: 1.2;
     color: #000000;
     margin-bottom: 6px;
@@ -251,10 +295,34 @@ small {
 .label-flavor-notes::before {
     content: 'TASTING NOTES';
     display: block;
-    font-size: 7px;
     font-weight: bold;
     color: #000000;
     margin-bottom: 2px;
+}
+
+/* Flavor notes sizing for different label sizes */
+.label-preview.standard .label-flavor-notes {
+    font-size: 8px;
+}
+
+.label-preview.standard .label-flavor-notes::before {
+    font-size: 7px;
+}
+
+.label-preview.large .label-flavor-notes {
+    font-size: 10px;
+}
+
+.label-preview.large .label-flavor-notes::before {
+    font-size: 9px;
+}
+
+.label-preview.small .label-flavor-notes {
+    font-size: 6px;
+}
+
+.label-preview.small .label-flavor-notes::before {
+    font-size: 5px;
 }
 
 .label-details {
@@ -271,7 +339,6 @@ small {
 .label-storage-date,
 .label-weight,
 .label-altitude {
-    font-size: 8px;
     color: #2C1810;
 }
 
@@ -290,11 +357,71 @@ small {
 .label-storage-date::before,
 .label-weight::before,
 .label-altitude::before {
-    font-size: 6px;
     font-weight: bold;
     color: #000000;
     display: block;
     margin-bottom: 1px;
+}
+
+/* Detail sizing for different label sizes */
+.label-preview.standard .label-processing,
+.label-preview.standard .label-region,
+.label-preview.standard .label-varietal,
+.label-preview.standard .label-roast-date,
+.label-preview.standard .label-storage-date,
+.label-preview.standard .label-weight,
+.label-preview.standard .label-altitude {
+    font-size: 8px;
+}
+
+.label-preview.standard .label-processing::before,
+.label-preview.standard .label-region::before,
+.label-preview.standard .label-varietal::before,
+.label-preview.standard .label-roast-date::before,
+.label-preview.standard .label-storage-date::before,
+.label-preview.standard .label-weight::before,
+.label-preview.standard .label-altitude::before {
+    font-size: 6px;
+}
+
+.label-preview.large .label-processing,
+.label-preview.large .label-region,
+.label-preview.large .label-varietal,
+.label-preview.large .label-roast-date,
+.label-preview.large .label-storage-date,
+.label-preview.large .label-weight,
+.label-preview.large .label-altitude {
+    font-size: 10px;
+}
+
+.label-preview.large .label-processing::before,
+.label-preview.large .label-region::before,
+.label-preview.large .label-varietal::before,
+.label-preview.large .label-roast-date::before,
+.label-preview.large .label-storage-date::before,
+.label-preview.large .label-weight::before,
+.label-preview.large .label-altitude::before {
+    font-size: 8px;
+}
+
+.label-preview.small .label-processing,
+.label-preview.small .label-region,
+.label-preview.small .label-varietal,
+.label-preview.small .label-roast-date,
+.label-preview.small .label-storage-date,
+.label-preview.small .label-weight,
+.label-preview.small .label-altitude {
+    font-size: 6px;
+}
+
+.label-preview.small .label-processing::before,
+.label-preview.small .label-region::before,
+.label-preview.small .label-varietal::before,
+.label-preview.small .label-roast-date::before,
+.label-preview.small .label-storage-date::before,
+.label-preview.small .label-weight::before,
+.label-preview.small .label-altitude::before {
+    font-size: 5px;
 }
 
 .label-weight {

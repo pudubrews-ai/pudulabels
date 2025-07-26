@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('labelForm');
     const previewBtn = document.getElementById('previewBtn');
     const preview = document.getElementById('preview');
+    const labelSizeSelect = document.getElementById('labelSize');
+    const labelPreview = document.querySelector('.label-preview');
     
     // Set today's date as default for roast date
     const today = new Date().toISOString().split('T')[0];
@@ -47,12 +49,33 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('altitudeAmount').addEventListener('input', updateAltitudeValue);
     document.getElementById('altitudeUnit').addEventListener('change', updateAltitudeValue);
     
+    // Initialize preview with default label size
+    updateLabelPreviewSize();
+    
+    // Handle label size changes
+    labelSizeSelect.addEventListener('change', function() {
+        updateLabelPreviewSize();
+        if (preview.style.display !== 'none') {
+            updatePreview();
+        }
+    });
+    
     // Preview functionality
     previewBtn.addEventListener('click', function() {
         updatePreview();
         preview.style.display = 'block';
         preview.scrollIntoView({ behavior: 'smooth' });
     });
+    
+    function updateLabelPreviewSize() {
+        const selectedSize = labelSizeSelect.value;
+        
+        // Remove existing size classes
+        labelPreview.classList.remove('standard', 'large', 'small');
+        
+        // Add the selected size class
+        labelPreview.classList.add(selectedSize);
+    }
     
     function updatePreview() {
         const formData = new FormData(form);

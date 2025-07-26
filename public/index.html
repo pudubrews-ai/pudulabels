@@ -99,8 +99,19 @@
                         </div>
                     </div>
 
+                    <!-- Label Size -->
+                    <div class="form-group">
+                        <label for="labelSize">Label Size *</label>
+                        <select id="labelSize" name="labelSize" required>
+                            <option value="standard" selected>Standard (3" x 2")</option>
+                            <option value="large">Large (4" x 3")</option>
+                            <option value="small">Small (2" x 1.5")</option>
+                        </select>
+                        <small>Choose your label printer size</small>
+                    </div>
+
                     <!-- QR Code URL -->
-                    <div class="form-group full-width">
+                    <div class="form-group">
                         <label for="qrUrl">QR Code URL (Optional)</label>
                         <input type="url" id="qrUrl" name="qrUrl" placeholder="https://example.com/coffee-details">
                         <small>Link to bean info, farm details, or product page</small>
